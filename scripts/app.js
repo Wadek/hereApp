@@ -9,8 +9,23 @@ var platform = new H.service.Platform({
 var defaultLayers = platform.createDefaultLayers();
 var mapContainer = document.getElementById('map-container');
 
+
+var coordinates = {
+  lat: 52.530974, // HERE HQ in Berlin, Germany
+  lng: 13.384944
+};
+
+var mapOptions = {
+  center: coordinates,
+  zoom: 14
+}
+
 var map = new H.Map(
   mapContainer,
-  defaultLayers.normal.map);
+  defaultLayers.normal.map,
+  mapOptions);
+
+var marker = new H.map.Marker(coordinates);
+map.addObject(marker);
 
 var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
